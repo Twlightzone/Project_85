@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Button, Text } from 'react-native';
 
 export default class LoginScreen extends Component {
+
+    signWithGoogleAsync = async() => {
+        try {
+            const result = await Google.login.Async({
+                web : "web",
+                andriodClientId : "",
+                //add it here ,
+                iosClientId : "",
+                //add this too
+                scopes: ['profile','email']});
+                if (result.type === "success") {
+                    this.onSignIn(result);
+                    return result.accessToken;
+                  } else {
+                    return { cancelled: true };
+                  }
+            } catch (e) {
+                console.log(e.message);
+                return { error: true };
+            }
+       
+    }
+
     render(){
         return(
             <View>
-                <Text>
-                    LoginScreen
-                </Text>
+                <Text> Hah hah it didnt say what to do here :c</Text>
             </View>
         )
     }
