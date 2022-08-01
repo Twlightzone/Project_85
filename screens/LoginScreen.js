@@ -6,7 +6,7 @@ export default class LoginScreen extends Component {
     signWithGoogleAsync = async() => {
         try {
             const result = await Google.login.Async({
-                web : "web",
+                behaviour : "web",
                 andriodClientId : "",
                 //add it here ,
                 iosClientId : "",
@@ -27,8 +27,8 @@ export default class LoginScreen extends Component {
 
     render(){
         return(
-            <View>
-                <Text> Hah hah it didnt say what to do here :c</Text>
+            <View style={{flex : 1, justifyContent : 'center', alignItems : 'center'}}>
+                <Button title="Sign in with google (no github or apple)" onPress={()=>this.signWithGoogleAsync()}></Button>
             </View>
         )
     }
